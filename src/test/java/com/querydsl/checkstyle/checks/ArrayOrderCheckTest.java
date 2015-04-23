@@ -7,9 +7,11 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
+import org.apache.commons.lang3.ClassUtils;
 import org.junit.*;
 
 import com.google.common.collect.Lists;
@@ -92,15 +94,15 @@ public class ArrayOrderCheckTest {
     private static List<File> getFiles(Class<?>... classes) {
         List<File> files = Lists.newArrayList();
 
-        for (Class<?> clazz : classes) {
-            files.add(getFile(clazz));
+        for (String className : ClassUtils.convertClassesToClassNames(Arrays.asList(classes))) {
+            files.add(getFile(className));
         }
 
         return files;
     }
 
-    private static File getFile(Class<?> clazz) {
-        return new File("src/test/java/" + clazz.getCanonicalName().replace(".", "/") + ".java");
+    private static File getFile(String className) {
+        return new File("src/test/java/" + className.replace(".", "/") + ".java");
     }
 
 }
