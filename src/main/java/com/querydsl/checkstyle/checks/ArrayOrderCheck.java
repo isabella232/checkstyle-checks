@@ -34,8 +34,7 @@ public class ArrayOrderCheck extends Check {
         Ordering<String> naturalOrdering = Ordering.natural();
         boolean ordered = naturalOrdering.isOrdered(identifiers);
         if (!ordered) {
-            log(ast, identifiers + " is not ordered correctly, "
-                    + "expected " + naturalOrdering.sortedCopy(identifiers));
+            log(ast, "ArrayOrder.unordered", identifiers, naturalOrdering.sortedCopy(identifiers));
         }
     }
 }
