@@ -1,0 +1,8 @@
+language: java
+jdk:
+  - oraclejdk7
+install:
+  - sh -c 'mvn -B -q install -DskipTests=true'
+script:
+  - sh -c 'mvn -B test '
+
