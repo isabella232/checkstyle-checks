@@ -4,5 +4,4 @@ jdk:
 install:
   - sh -c 'mvn -B -q install -DskipTests=true'
 script:
-  - sh -c 'mvn -B test '
-
+  - sh -c 'mvn -B test'
