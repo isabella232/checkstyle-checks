@@ -3,10 +3,7 @@ package com.querydsl.checkstyle.checks;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import java.io.ByteArrayOutputStream;
-import java.io.File;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -43,7 +40,7 @@ public class ArrayOrderCheckTest {
     }
 
     @Before
-    public void initialize() throws CheckstyleException {
+    public void initialize() throws CheckstyleException, UnsupportedEncodingException {
         checker = getChecker(getChecksConfiguration(ArrayOrderCheck.class));
     }
 
@@ -71,7 +68,7 @@ public class ArrayOrderCheckTest {
         assertTrue(errorOutput.isEmpty());
     }
 
-    private Checker getChecker(Configuration configuration) throws CheckstyleException {
+    private Checker getChecker(Configuration configuration) throws CheckstyleException, UnsupportedEncodingException {
         Checker checker = new Checker();
         checker.setModuleClassLoader(Thread.currentThread().getContextClassLoader());
         checker.addListener(new DefaultLogger(ByteStreams.nullOutputStream(), true, errorOutputStream, true));
